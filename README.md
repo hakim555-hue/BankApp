@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Application Web Jakarta EE - Gestion de Comptes Utilisateurs
 
 Application Web Jakarta EE pour la gestion de comptes bancaires. Architecture MVC avec JPA, EJB et JSF.
@@ -91,3 +92,6 @@ BankEntityWebApplication/
 2. Remplir : Client Name "Alice", Balance 1000
 3. Cliquer "Create Account"
 4. Vérifier dans MySQL : `SELECT * FROM ACCOUNT;`
+=======
+# BankApp
+>>>>>>> 8fecdab7a247aace7857e850c7f96bfee72966d6
