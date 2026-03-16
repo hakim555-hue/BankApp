@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN"
+        "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+
+    <jdbc-connection-pool name="BankH2Pool"
+                          res-type="javax.sql.DataSource"
+                          datasource-classname="org.h2.jdbcx.JdbcDataSource">
+
+        <property name="URL" value="jdbc:h2:mem:bankdb"/>
+        <property name="user" value="sa"/>
+        <property name="password" value=""/>
+
+    </jdbc-connection-pool>
+
+    <jdbc-resource enabled="true"
+                   jndi-name="jdbc/bankh2"
+                   pool-name="BankH2Pool"/>
+
+</resources>

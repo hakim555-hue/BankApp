@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Bank Account Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+<h:body>
+    <div class="container">
+        <h1>Gestion des Comptes Bancaires</h1>
+
+        <h:form>
+            <div class="form-group">
+                <h:outputLabel for="clientName" value="Client Name: "/>
+                <h:inputText
+                        id="clientName"
+                        value="#{accountInfoView.clientName}"
+                        required="true"
+                        requiredMessage="Le nom du client est requis"
+                />
+                <h:message for="clientName" styleClass="error"/>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="balance" value="Balance: "/>
+                <h:inputText
+                        id="balance"
+                        value="#{accountInfoView.balance}"
+                        required="true"
+                        requiredMessage="Le solde est requis"
+                        converterMessage="Veuillez entrer un nombre valide"
+                >
+                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                </h:inputText>
+                <h:message for="balance" styleClass="error"/>
+            </div>
+            <h:commandButton
+                    value="Create Account"
+                    action="#{accountInfoView.createAccount()}"
+                    styleClass="btn"
+            />
+        </h:form>
+
+        <h2>Comptes existants</h2>
+        <h:dataTable
+                value="#{accountInfoView.accounts}"
+                var="account"
+                styleClass="data-table"
+                headerClass="table-header"
+                rowClasses="table-row-odd,table-row-even"
+        >
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{account.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Owner Name</f:facet>
+                #{account.ownerName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Balance</f:facet>
+                <h:outputText value="#{account.balance}">
+                    <f:convertNumber type="currency" currencySymbol="€" />
+                </h:outputText>
+            </h:column>
+        </h:dataTable>
+
+        <h:link
+                value="Voir la liste des comptes"
+                outcome="response"
+                styleClass="link"
+        />
+    </div>
+</h:body>
+</html>

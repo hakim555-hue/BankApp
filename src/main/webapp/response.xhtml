@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="jakarta.faces.html"
+  xmlns:f="jakarta.faces.core"
+>
+  <h:head>
+    <title>Liste des Comptes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <h:outputStylesheet library="css" name="styles.css" />
+  </h:head>
+  <h:body>
+    <div class="container">
+      <h1>Liste des Comptes</h1>
+
+      <h:dataTable
+        value="#{accountInfoView.accounts}"
+        var="account"
+        styleClass="data-table"
+        headerClass="table-header"
+        rowClasses="table-row-odd,table-row-even"
+      >
+        <h:column>
+          <f:facet name="header">ID</f:facet>
+          #{account.id}
+        </h:column>
+        <h:column>
+          <f:facet name="header">Owner Name</f:facet>
+          #{account.ownerName}
+        </h:column>
+        <h:column>
+          <f:facet name="header">Balance</f:facet>
+          #{account.balance}
+        </h:column>
+      </h:dataTable>
+
+      <h:link value="Retour à l'accueil" outcome="index" styleClass="link" />
+    </div>
+  </h:body>
+</html>

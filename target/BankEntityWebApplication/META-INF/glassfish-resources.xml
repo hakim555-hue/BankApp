@@ -1,0 +1,18 @@
+<resources>
+
+    <jdbc-connection-pool name="BankPersistencePool"
+                          res-type="javax.sql.DataSource"
+                          datasource-classname="com.mysql.cj.jdbc.MysqlDataSource">
+
+        <property name="serverName" value="localhost"/>
+        <property name="portNumber" value="3308"/>
+        <property name="databaseName" value="bankdb"/>
+        <property name="user" value="bankuser"/>
+        <property name="password" value="bankpass"/>
+
+    </jdbc-connection-pool>
+
+    <jdbc-resource pool-name="BankPersistencePool"
+                   jndi-name="jdbc/bankpersistence"/>
+
+</resources>
